@@ -1,0 +1,18 @@
+{
+  "name": "url-shortner",
+  "version": "1.0.0",
+  "description": "A url shortner application like bit.ly which takes a url and shortens it",
+  "license": "ISC",
+  "author": "Maaz",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.15.2",
+    "nodemon": "^3.1.10",
+    "short-id": "^0.1.0-1"
+  }
+}
