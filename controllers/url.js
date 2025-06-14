@@ -10,7 +10,7 @@ async function handleGenerateNewShortUrls(req,res){
 
     await URL.create({
         shortId: short_id,
-        redirectUrl: body.url,
+        redirectURL: body.url,
         visitHistory: [],
 
     })
@@ -18,6 +18,23 @@ async function handleGenerateNewShortUrls(req,res){
     return res.json({id: short_id}).status(201);
 }
 
+async function handleGetRoute(req,res){
+    const id = req.params.shortId;
+    // We pass 2 objects, first has id which we are finding
+    // Other we are updating, we are pushing in an array, so use $push
+
+    // Returns a document/row
+    const entry = await URL.findOneAndUpdate({
+        shortId: id
+    }, { $push: {
+        visitHistory: { timestamp: Date.now()}
+        }
+    }
+    )
+    res.redirect(entry.redirectURL)
+}
+
 module.exports = {
-    handleGenerateNewShortUrls
+    handleGenerateNewShortUrls,
+    handleGetRoute
 }
