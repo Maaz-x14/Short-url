@@ -15,7 +15,9 @@ async function handleGenerateNewShortUrls(req,res){
 
     })
     
-    return res.json({id: short_id}).status(201);
+    return res.render('home', {
+        id: short_id
+    });
 }
 
 async function handleGetRoute(req,res){
