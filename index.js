@@ -6,6 +6,7 @@ const URL = require('./models/url');
 
 const urlRoute = require('./routes/url');
 const staticRoute = require('./routes/staticRouter');
+const userRoute = require('./routes/users');
 
 const app = express();
 const port = 3000;
@@ -35,8 +36,12 @@ app.get('/test', async (req,res)=>{
     });
 })
 
-app.use('/url', urlRoute);
+// We are sending actual requests from views using staticRoute
 app.use('/', staticRoute);
+
+// The request send by staticRoute from views are handled by these routes
+app.use('/url', urlRoute);
+app.use('/users', userRoute);
 
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}`)
