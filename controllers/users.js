@@ -1,4 +1,5 @@
 const User = require('../models/users');
+const uuid = require('uuid');
 
 async function handleUserSignup(req,res){
     const { name, email, password } = req.body;
@@ -7,11 +8,30 @@ async function handleUserSignup(req,res){
         email,
         password
     })
-    return res.render('home');
+    return res.redirect('/login');   
 }
 
+async function handleUserLogin(req,res){
+    const { email, password } = req.body;
+    const user = await User.findOne({
+        email,
+        password
+    });
+
+    if(!user){
+        return res.render('login', {
+            error: 'Invalid Username or password'
+        })
+    }
+
+    const sessionId = uuid.v4();
+    // Now we have to make a way to map this sessionId with a user object
+    // So we know whose session id is it
+    
+    return res.redirect('/');
+}
 
 module.exports = {
     handleUserSignup,
-
+    handleUserLogin
 }

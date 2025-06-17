@@ -36,6 +36,9 @@ app.get('/test', async (req,res)=>{
     });
 })
 
+// To access public
+app.use(express.static('public'));
+
 // We are sending actual requests from views using staticRoute
 app.use('/', staticRoute);
 
