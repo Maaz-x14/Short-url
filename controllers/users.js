@@ -1,5 +1,6 @@
 const User = require('../models/users');
 const uuid = require('uuid');
+const { setUser, getUser } = require('../service/auth');
 
 async function handleUserSignup(req,res){
     const { name, email, password } = req.body;
@@ -25,6 +26,8 @@ async function handleUserLogin(req,res){
     }
 
     const sessionId = uuid.v4();
+    setUser(sessionId, user);
+    res.cookie('UID', sessionId);
     // Now we have to make a way to map this sessionId with a user object
     // So we know whose session id is it
     

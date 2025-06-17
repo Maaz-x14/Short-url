@@ -14,7 +14,6 @@ const port = 3000;
 connectMongoDB('mongodb://127.0.0.1:27017/short-url').then(() => console.log("MongoDB connected"));
 
 // Express is compatible with ejs, so we use ejs for SSR
-
 // Setting the view engine to ejs
 app.set('view engine', 'ejs');
 // Setting the path for ejs files
