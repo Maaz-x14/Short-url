@@ -12,7 +12,8 @@ async function handleGenerateNewShortUrls(req,res){
         shortId: short_id,
         redirectURL: body.url,
         visitHistory: [],
-
+        // We got this user from middleware
+        createdBy: req.user._id
     })
     
     return res.render('home', {
