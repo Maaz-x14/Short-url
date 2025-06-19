@@ -21,7 +21,7 @@ async function handleUserLogin(req,res){
     // Now we have to map sessionId with user, so we use a hashMap  
 
     if(!user){
-        return res.render('login', {
+        return res.render('login', {    
             error: 'Invalid Username or password'
         })
     }
