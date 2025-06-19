@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <style>
-        body {
-            font-family: sans-serif;
-        }
-    </style>    
+    <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
-
+    <button onclick="toggleTheme()" style="position: fixed; top: 1rem; right: 1rem;">Toggle Theme</button>
     <h1>URL Shortener</h1> 
     <% if (locals.id) { %>
         <p>URL generated: http://localhost:3000/url/<%= id %></p>
@@ -49,6 +45,20 @@
     <div>
 
     </div>
+
+    <script>
+    const toggleTheme = () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        localStorage.setItem('theme', current === 'dark' ? 'light' : 'dark');
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+
+    </script>
 
 </body>
 </html>
