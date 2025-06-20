@@ -1,0 +1,104 @@
+:root {
+  --primary-color: #4F46E5;
+  --accent-color: #22D3EE;
+  --bg-color: #F9FAFB;
+  --text-color: #1F2937;
+  --card-bg: #FFFFFF;
+  --transition-speed: 0.3s;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1F2937;
+  --text-color: #F9FAFB;
+  --card-bg: #374151;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 2rem;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  animation: fadeInDown 0.8s ease;
+}
+
+form {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  margin: 0 auto;
+  animation: slideUp 0.8s ease;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.9rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  transition: border var(--transition-speed);
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus,
+input[type="email"]:hover,
+input[type="email"]:focus,
+input[type="password"]:hover,
+input[type="password"]:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+button[type="submit"],
+button[onclick] {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+button:hover {
+  background-color: var(--accent-color);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
