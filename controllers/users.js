@@ -26,15 +26,16 @@ async function handleUserLogin(req,res){
         })
     }
 
-    const sessionId = uuid.v4();
-    setUser(sessionId, user);
-    res.cookie('uid', sessionId);
+    // const sessionId = uuid.v4();
+    const token = setUser(user);
+    res.cookie("uid", token);  // When user logins, we send a token in cookie
+    // Now even if server is restarted, we would still be logged in as state is in browser
+
     // Now we have to make a way to map this sessionId with a user object
     // So we know whose session id is it
     
     // So now whenever we login, a cookie is generated with a sessionId. That sessionId is mapped with a user.
     // So we will use a middleware to find out which user is mapped to that session id using getUser(sessionId),
-    
 
     return res.redirect('/');
 }
